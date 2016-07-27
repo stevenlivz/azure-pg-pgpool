@@ -33,7 +33,8 @@
   "variables": {
     "region": "[parameters('commonSettings').region]",
     "namespace": "[parameters('commonSettings').namespace]",
-    "subnetRef": "[concat(resourceId(parameters('networkSettings').virtualNetworkResourceGroup, 'Microsoft.Network/virtualNetworks', parameters('networkSettings').virtualNetworkName), '/subnets/', parameters('networkSettings').subnet1Name)]",
+    "vnetID": "[resourceId(parameters('networkSettings').virtualNetworkResourceGroup, 'Microsoft.Network/virtualNetworks', parameters('networkSettings').virtualNetworkName)]",
+    "subnetRef": "[concat(variables('vnetID'),'/subnets/', parameters('networkSettings').subnet1Name)]"
     "vmName": "[variables('namespace')]",
     "nicName": "[concat(variables('namespace'), 'nic-')]",
     "adminUsername": "[parameters('commonSettings').adminUsername]",
