@@ -45,7 +45,10 @@
         },
         "subnets": [
           {
-            "id": "[variables('subnetRef')]"
+            "name": "[parameters('networkSettings').subnet1Name]",
+            "properties": {
+               "addressPrefix": "[parameters('networkSettings').subnet1Prefix]"
+             }            
           }
         ]
       }
