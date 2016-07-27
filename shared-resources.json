@@ -15,10 +15,7 @@
       "type": "object"
     }
   },
-  "variables": {
-    "vnetID": "[resourceId(parameters('networkSettings').virtualNetworkResourceGroup, 'Microsoft.Network/virtualNetworks', parameters('networkSettings').virtualNetworkName)]",
-    "subnetRef": "[concat(variables('vnetID'),'/subnets/', parameters('networkSettings').subnet1Name)]"
-  },
+  "variables": {},
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
@@ -31,24 +28,6 @@
       },
       "properties": {
         "accountType": "Standard_LRS"
-      }
-    },
-    {
-      "apiVersion": "2015-05-01-preview",
-      "type": "Microsoft.Network/virtualNetworks",
-      "name": "[parameters('networkSettings').virtualNetworkName]",
-      "location": "[parameters('region')]",
-      "properties": {
-        "addressSpace": {
-          "addressPrefixes": [
-            "[parameters('networkSettings').addressPrefix]"
-          ]
-        },
-        "subnets": [
-          {
-           "id": "[variables('subnetRef')]"         
-          }
-        ]
       }
     },
     {
