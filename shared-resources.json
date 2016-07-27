@@ -15,9 +15,7 @@
       "type": "object"
     }
   },
-  "variables": {
-    "subnetRef": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('networkSettings').virtualNetworkName), '/subnets/', parameters('networkSettings').subnet1Name)]",
-  },
+  "variables": {},
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
