@@ -171,13 +171,20 @@ configure_streaming_replication() {
 		echo "" >> pg_hba.conf
 		echo "# install_postgresql.sh" >> pg_hba.conf
 		echo "host replication replicator $SUBNETADDRESS md5" >> pg_hba.conf
-		echo "hostssl replication replicator $SUBNETADDRESS md5" >> pg_hba.conf
+
+		### Disable SSL Auth
+		#echo "hostssl replication replicator $SUBNETADDRESS md5" >> pg_hba.conf
+
 		echo "host postgres mhealthuser $SUBNETADDRESS trust" >> pg_hba.conf
-		echo "hostssl postgres mhealthuser $SUBNETADDRESS trust" >> pg_hba.conf
+
+		### Disable SSL Auth
+		#echo "hostssl postgres mhealthuser $SUBNETADDRESS trust" >> pg_hba.conf
 
 		# allow remote acccess in this subnet
 		echo "host all all $SUBNETADDRESS md5" >> pg_hba.conf
-		echo "hostssl all all $SUBNETADDRESS md5" >> pg_hba.conf
+
+		### Disable SSL Auth
+		#echo "hostssl all all $SUBNETADDRESS md5" >> pg_hba.conf
 
 		echo "" >> pg_hba.conf
 
@@ -202,6 +209,7 @@ configure_streaming_replication() {
 		echo "archive_mode = on" >> postgresql.conf
 		echo "archive_command = 'cd .'" >> postgresql.conf
 		echo "hot_standby = on" >> postgresql.conf
+		echo "ssl = false" >> postgresql.conf
 
 		# point to the new data directory
 		echo "data_directory='/var/lib/kafkadir/main'" >> postgresql.conf ### added
