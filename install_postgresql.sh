@@ -210,6 +210,7 @@ configure_streaming_replication() {
 		echo "archive_command = 'cd .'" >> postgresql.conf
 		echo "hot_standby = on" >> postgresql.conf
 		echo "ssl = false" >> postgresql.conf
+		echo "max_connections = 100" >> postgresql.conf
 
 		# point to the new data directory
 		echo "data_directory='/var/lib/kafkadir/main'" >> postgresql.conf ### added
