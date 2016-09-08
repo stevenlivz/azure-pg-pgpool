@@ -207,7 +207,7 @@ configure_streaming_replication() {
 		echo "wal_keep_segments = 500" >> postgresql.conf
 		echo "checkpoint_segments = 8" >> postgresql.conf
 		echo "archive_mode = on" >> postgresql.conf
-		echo "archive_command = 'cd .'" >> postgresql.conf
+		echo "archive_command = 'cp %p ../archive/%f'" >> postgresql.conf
 		echo "hot_standby = on" >> postgresql.conf
 		echo "ssl = false" >> postgresql.conf
 		echo "max_connections = 100" >> postgresql.conf
